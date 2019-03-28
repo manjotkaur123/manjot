@@ -10,7 +10,9 @@ namespace manjot
     class Program
     {
         static void Main(string[] args)
+
         {
+
             Console.WriteLine("Peter Rules the IT Universe!");
 
             Download();
@@ -21,21 +23,27 @@ namespace manjot
 
 
 
-        static void Download()
+        static async void Download()
 
         {
 
-            Task.Run(() =>
+            await Network.Download();
+
+            Console.WriteLine("Download Complete");
+
+        }
+
+        class Network
+
+        {
+
+            static public Task Download()
 
             {
 
-                Thread.Sleep(3000);
-
-                Console.WriteLine("Download Complete ...");
+                return Task.Run(() => Thread.Sleep(3000));
 
             }
-
-                );
 
         }
 
