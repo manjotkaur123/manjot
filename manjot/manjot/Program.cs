@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -26,11 +27,13 @@ namespace manjot
         static async void Download()
 
         {
+            HttpClient client = new HttpClient();
 
-            await Network.Download();
+           var data = await client.GetStringAsync("https://moodle.cestarcollege.com");
 
-            Console.WriteLine("Download Complete");
 
+            Console.WriteLine(data);
+            List mylist = new List();
         }
 
         class Network
